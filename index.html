@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        
+        const playerSelection = 'Rock'
+        const computerSelection = getComputerChoice()
+        const result = playRound(playerSelection, computerSelection)
+        console.log(result)
+
+        function playRound(playerSelection, computerSelection) {
+            const playerSelectionCaseInsensitive = playerSelection.toLowerCase();
+
+            if (playerSelectionCaseInsensitive === computerSelection) {
+                return 'Tie!';
+            } else if (playerSelectionCaseInsensitive === 'rock') {
+                if (computerSelection === 'scissors') {
+                    return 'Player wins!';
+                } else {
+                    return 'Computer wins!';
+                }
+            } else if (playerSelectionCaseInsensitive === 'paper') {
+                if (computerSelection === 'rock') {
+                    return 'Player wins!';
+                } else {
+                    return 'Computer wins!';
+                }
+            } else if (playerSelectionCaseInsensitive === 'scissors') {
+                if (computerSelection === 'paper') {
+                    return 'Player wins!';
+                } else {
+                    return 'Computer wins!';
+                }
+            }
+        }
+
+        function getComputerChoice() {
+            const choices = ["rock", "paper", "scissors"];
+            const randomNumber = Math.floor(Math.random() * 3);
+            return choices[randomNumber];
+        }
     </script>
 </body>
+
 </html>
