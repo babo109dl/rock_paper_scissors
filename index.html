@@ -10,10 +10,30 @@
 
 <body>
     <script>
-        const playerSelection = 'Rock'
-        const computerSelection = getComputerChoice()
-        const result = playRound(playerSelection, computerSelection)
-        console.log(result)
+        let playerSelection
+        let scoreboard = {
+            player: 0,
+            computer: 0
+        }
+        for (let i = 0; i < 5; i++) {
+            playerSelection = prompt('Rock, Paper, or Scissors?')
+            let result = playRound(playerSelection, getComputerChoice());
+            if (result === 'Player wins!') {
+                scoreboard.player++
+            } else if (result === 'Computer wins!') {
+                scoreboard.computer++
+            }
+            console.log(result)
+        }
+
+        console.log("--end of game--")
+        if (scoreboard.player > scoreboard.computer) {
+            console.log('Player wins!')
+        } else if (scoreboard.player < scoreboard.computer) {
+            console.log('Computer wins!')
+        } else {
+            console.log('Tie!')
+        }
 
         function playRound(playerSelection, computerSelection) {
             const playerSelectionCaseInsensitive = playerSelection.toLowerCase();
