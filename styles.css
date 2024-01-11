@@ -1,9 +1,31 @@
-h3 {
+h3, p {
     text-align: center;
-    padding: 50px 0;
+    padding: 25px 0;
 }
 
 .buttons {
     display: flex;
     justify-content: space-around;
+}
+
+.scores {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.scoreboard {
+    font-size: 24px;
+}
+
+.player-score, .computer-score {
+    padding: 0;
+}
+
+.player-score {
+    color: blue;
+}
+
+.computer-score {
+    color: red;
 }

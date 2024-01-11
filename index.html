@@ -17,18 +17,45 @@
             <button type="button" value="paper">Paper</button>
             <button type="button" value="scissors">Scissors</button>
         </div>
+        <div>
+            <p class="scoreboard">Scoreboard:</p>
+            <div class="scores">
+                <p class="player-score">Player: 0</p>
+                <p class="computer-score">Computer: 0</p>
+            </div>
+            <p class="result"></p>
+        </div>
     </div>
 
     <script>
 
         const buttons = document.querySelectorAll("button");
+        const result = document.querySelector(".result");
+        const playerScore = document.querySelector(".player-score");
+        const computerScore = document.querySelector(".computer-score");
+        let pScore = 1;
+        let cScore = 1;
 
         buttons.forEach(btn => {
             btn.addEventListener('click', () => {
-                let result = playRound(btn.value, getComputerChoice());
-                console.log(result);
+                let rslt = playRound(btn.value, getComputerChoice())
+                updateScoreboard(rslt);
+                if (pScore === 6 || cScore === 6) {
+                    buttons.forEach(btn => {
+                        btn.setAttribute("disabled", "");
+                    })
+                }
             })
         })
+
+        function updateScoreboard(rslt) {
+            result.textContent = "Last game result: " + rslt;
+            if (rslt === 'Player wins!') {
+                playerScore.textContent = "Player: " + (pScore++);
+            } else if (rslt === 'Computer wins!') {
+                computerScore.textContent = "Computer: " + (cScore++);
+            }
+        }
 
         /*
         let playerSelection = prompt('Rock, Paper, or Scissors?');
