@@ -4,13 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
+    <div>
+        <h3>Rock, Paper, or Scissors?</h3>
+        <div class="buttons">
+            <button type="button" value="rock">Rock</button>
+            <button type="button" value="paper">Paper</button>
+            <button type="button" value="scissors">Scissors</button>
+        </div>
+    </div>
+
     <script>
-        let playerSelection
+
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                let result = playRound(btn.value, getComputerChoice());
+                console.log(result);
+            })
+        })
+
+        /*
+        let playerSelection = prompt('Rock, Paper, or Scissors?');
+        let result = playRound(playerSelection, getComputerChoice());
+        console.log(result);
+        */
+
+        /*
         let scoreboard = {
             player: 0,
             computer: 0
@@ -34,6 +60,8 @@
         } else {
             console.log('Tie!')
         }
+
+        */
 
         function playRound(playerSelection, computerSelection) {
             const playerSelectionCaseInsensitive = playerSelection.toLowerCase();
